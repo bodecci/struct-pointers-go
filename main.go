@@ -35,13 +35,20 @@ func main() {
 	fmt.Println(bode)
 	fmt.Printf("%+v\n", bode)
 
+	// this update did not take place. to make this happen,
+	// we use pointers
 	jim.updateName("Jimmy")
+	jim.print()
+
+	// using pointers here
+	jimPointer := &jim
+	jimPointer.updateName("Jimmy")
 	jim.print()
 
 }
 
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (p *person) updateName(newFirstName string) {
+	(*p).firstName = newFirstName
 }
 
 func (p person) print() {
